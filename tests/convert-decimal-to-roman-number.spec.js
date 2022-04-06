@@ -29,6 +29,8 @@ class ConvertNumberService  {
 
         return result
     }
+
+    convertRomanNumberToDecimal ({ romanNumber }) {}
 }
 
 
@@ -56,5 +58,14 @@ describe('ConvertNumber', () => {
         it ('should print empty as long as number is less than or equal to zero', () => {
             expect(convertNumberService.convertDecimalToRomanNumber({ number: 0 })).toBe('');
         });
-    }) 
+    })
+    
+    describe('ConvertRomanToDecimal', () => {
+        it('should call ConvertRomanToDecimal with number correct', () => {
+            const romanNumber = 'I';
+            const spy = jest.spyOn(convertNumberService, 'convertRomanNumberToDecimal');
+            convertNumberService.convertRomanNumberToDecimal({ romanNumber });
+            expect(spy).toHaveBeenCalledWith({ romanNumber });
+        });
+    })
 })
