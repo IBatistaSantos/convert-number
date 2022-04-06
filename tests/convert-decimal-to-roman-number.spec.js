@@ -30,7 +30,40 @@ class ConvertNumberService  {
         return result
     }
 
-    convertRomanNumberToDecimal ({ romanNumber }) {}
+    convertRomanNumberToDecimal ({ romanNumber }) {
+        const romanNumberMap = {
+            'M': 1000,
+            'CM': 900,
+            'D': 500,
+            'CD': 400,
+            'C': 100,
+            'XC': 90,
+            'L': 50,
+            'XL': 40,
+            'X': 10,
+            'IX': 9,
+            'V': 5,
+            'IV': 4,
+            'I': 1
+        }
+
+        let numberdecimal = 0;
+        
+        for (let i = 0; i < romanNumber.length; i++) {
+              const current = romanNumberMap[romanNumber[i]];
+              const next = romanNumberMap[romanNumber[i + 1]];
+              if (next === undefined) {
+                  numberdecimal += current;
+                  continue;
+              }
+              if (current >= next) {
+                  numberdecimal += current;
+                  continue;
+              }
+              numberdecimal -= current;
+      } 
+          return numberdecimal; 
+    }
 }
 
 
@@ -67,5 +100,15 @@ describe('ConvertNumber', () => {
             convertNumberService.convertRomanNumberToDecimal({ romanNumber });
             expect(spy).toHaveBeenCalledWith({ romanNumber });
         });
+
+        it ('should print 1 for I', () => {
+            const romanNumber = 'I';
+            expect(convertNumberService.convertRomanNumberToDecimal({ romanNumber })).toBe(1);
+        })
+
+        it ('should print 250 for CCL', () => {
+            const romanNumber = 'CCL';
+            expect(convertNumberService.convertRomanNumberToDecimal({ romanNumber })).toBe(250);
+        })
     })
 })
