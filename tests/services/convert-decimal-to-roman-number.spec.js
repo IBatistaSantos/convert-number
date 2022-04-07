@@ -1,5 +1,5 @@
 
-const ConvertNumberService = require('../src/services/convert-number.service');
+const  ConvertNumberService = require('../../src/services/convert-number.service');
 
 
 describe('ConvertNumber', () => {
