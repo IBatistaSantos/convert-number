@@ -1,0 +1,95 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Convert Number",
+      "description": "API convert number decimal to roman number and vice versa",
+      "version": "1.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/convert/romanToDecimal": {
+        "get": {
+          "description": "Convert number roman from decimal.",
+          "parameters": [
+            {
+              "name": "number",
+              "in": "query",
+              "description": "Number roman from conversion in decimal",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "romanNumber": {
+                    "type": "string"
+                  },
+                  "decimal": {
+                      "type": "number"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/convert/decimalToRoman": {
+        "get": {
+          "description": "Convert number decimal from roman.",
+          "parameters": [
+            {
+              "name": "number",
+              "in": "query",
+              "description": "Number decimal from conversion in roman",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "romanNumber": {
+                    "type": "string"
+                  },
+                  "decimal": {
+                      "type": "number"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }   
+}
