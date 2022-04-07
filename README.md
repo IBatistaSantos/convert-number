@@ -48,3 +48,11 @@ For more information on the API documentation, access the full documentation on 
 ```sh
 localhost:3000/docs
 ```
+
+## Tests
+
+To run API tests
+
+```sh
+npm run test
+```
