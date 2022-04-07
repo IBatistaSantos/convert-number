@@ -1,12 +1,12 @@
 class ConvertNumberService  {
     convertDecimalToRomanNumber ({ number }) {
-        const romanNumber = this.getSymbolsRomanNumber();
+        const romanNumbers = this.getSymbolsRomanNumber();
         let result = ''
 
-        for (let key in romanNumber) {
-            while (number >= romanNumber[key]) {
+        for (let key in romanNumbers) {
+            while (number >= romanNumbers[key]) {
                 result += key
-                number -= romanNumber[key]
+                number -= romanNumbers[key]
             }
         }
         return result
@@ -16,10 +16,9 @@ class ConvertNumberService  {
         const romanNumberMap = this.getSymbolsRomanNumber();
         let numberdecimal = 0;
 
-        
-        for (let i = 0; i < romanNumber.length; i++) {
-              const current = romanNumberMap[romanNumber[i]];
-              const next = romanNumberMap[romanNumber[i + 1]];
+        for (let counterLength = 0; counterLength < romanNumber.length; counterLength++) {
+              const current = romanNumberMap[romanNumber[counterLength]];
+              const next = romanNumberMap[romanNumber[counterLength + 1]];
               if (next === undefined) {
                   numberdecimal += current;
                   continue;
